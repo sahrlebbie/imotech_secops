@@ -1,0 +1,14 @@
+<nav search_view="search" color="#FFFFFF">
+  <view name="imotech_solutions"/>
+    <view name="data_sources_overview"/>
+    <view name="security_posture_overview"/>
+    <view name="threat_hunting_dashboard"/>
+  <collection label="Splunk Default Pages">
+  <view name="search" default="true" />
+  <view name="analysis_workspace" />
+  <view name="datasets" />
+  <view name="reports" />
+  <view name="alerts" />
+  <view name="dashboards" />
+  </collection>
+</nav>

@@ -1,0 +1,66 @@
+<dashboard theme="dark">
+  <label>ImoTech Solutions</label>
+  <row>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">About Us</th>
+     </tr>
+     </table>
+     </html>
+      <html>
+       <p>
+            <img src="https://media.licdn.com/dms/image/C4E0BAQFJmxH6v74SNg/company-logo_200_200/0?e=1586390400&amp;v=beta&amp;t=EStGc9fJ41xPFQXnXTUiEt_4uGKlmSn6016aAqSHGME" style="border0px;margin:10px;width:10%;"/>
+          </p>
+       <p>Imo Tech Solutions is a Washington DC Metropolitan Area based company focused on Information Technology (IT) solutions.</p> 
+       <p>We specialized in providing IT  support and management services to both private companies and government agencies.</p>
+       <p> Our team of dedicated and certified professionals work closely with clients to meet their IT needs.</p>
+     </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <html>
+       <style type="text/css">
+   .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+   .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+   .tg .tg-6i5z{font-size:28px;font-family:"Arial Black", Gadget, sans-serif !important;;text-align:center;vertical-align:top}
+   </style>
+   <table class="tg">
+     <tr>
+       <th class="tg-6i5z">About Us</th>
+     </tr>
+     </table>
+     </html>
+      <html>
+       <p>
+          <font color="orange">Website:</font>
+          <a href=""> http://www.imo-tech.com/</a>
+        </p>
+       <p>
+          <font color="orange">Phone:</font> 301-494-5815</p>
+       <p>
+          <font color="orange">Industry:</font> Information Technology &amp; Services</p>
+       <p>
+          <font color="orange">Company Size:</font> 11-50 employees</p>
+       <p>
+          <font color="orange">Headquarters:</font> Lanham, Maryland</p>
+       <p>
+          <font color="orange">Type:</font> Partnership</p>
+       <p>
+          <font color="orange">Founded:</font> 2016</p>
+       <p>
+          <font color="orange">Specialities:</font> Database Management , Project Management , Cyber Security , Cloud Solutions, Asset Management , IT Audit/ Compliance, Business Intelligence, Value Added IT Re-seller, Enterprise Data Solutions, IT Training/Professional Devlopment, Service Desk Support, IT Infrastructure Management, Service Integration, and Amazon Web Services
+</p>
+     </html>
+    </panel>
+  </row>
+</dashboard>

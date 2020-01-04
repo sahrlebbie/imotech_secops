@@ -1,0 +1,170 @@
+<dashboard theme="dark">
+  <label>Security Posture Overview</label>
+  <row>
+    <panel>
+      <html>
+        <head>
+          <style>
+          img
+          { float: right;
+          }
+          </style>
+        </head>
+        <body>
+<p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxa2A4KcY6WpvJMuBfgROfOiuLAayrI0XXh49FhyP9H0GxKL6L&amp;s" style="border0px;margin:10px;width:10%;"/>
+          </p>
+        <h1>
+          <b>Overview</b>
+        </h1>
+      <p>The following dashboard is an overview of Active Threats discoverd at Enterprise Level. Threats are correlated into dashboard for analysis but further investigation should be conducted to validate or disprove.</p>
+      <br/>
+      <p>All data sourcees indexed are correlated into datamodels that can be tweaked at customer request.</p>
+      </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Active Threats Metric</title>
+      <single>
+        <search>
+          <query>index=_internal error |timechart count</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorBy">trend</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x53a051","0x53a051"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trendColorInterpretation">inverse</option>
+        <option name="underLabel">threats detected</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Threat Sources</title>
+      <single>
+        <search>
+          <query>| tstats count where index=* OR index=_* by source,_time |timechart sum(count) by source</query>
+          <earliest>-7d@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">trend</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x555"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Sources Monitored</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Correlated Incidents Count</title>
+      <single>
+        <search>
+          <query>| tstats count where index=* OR index=_* by host,_time |timechart sum(count) by host</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">trend</option>
+        <option name="colorMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x555","0x555"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trendColorInterpretation">inverse</option>
+        <option name="underLabel">threat correlation</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Mitigations</title>
+      <single>
+        <search>
+          <query>| tstats count where index=* OR index=_* by sourcetype,_time |timechart sum(count) by sourcetype</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">trend</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x555","0x555"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trendColorInterpretation">inverse</option>
+        <option name="underLabel">Active Mitigations</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Top 10 Countries with Active Threats</title>
+      <chart>
+        <search>
+          <query>index="imotech_eventgen" |stats count by country |sort - count | head 10 |rename count as "Active Threat Ips"</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">-45</option>
+        <option name="charting.chart">column</option>
+        <option name="charting.chart.stackMode">stacked</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart>
+        <title>Top 10 Malicious IPs</title>
+        <search>
+          <query>index="imotech_eventgen"  | stats count by ip |sort - count |head 10</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <map>
+        <title>Threats Locator</title>
+        <search>
+          <query>index="imotech_eventgen"  | stats count by ip |sort - count |head 10 |iplocation ip |geostats count by Country</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="mapping.map.center">(0,0.18)</option>
+        <option name="mapping.map.scrollZoom">0</option>
+        <option name="mapping.map.zoom">2</option>
+        <option name="mapping.tileLayer.maxZoom">7</option>
+        <option name="mapping.tileLayer.url">http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png</option>
+        <option name="mapping.type">marker</option>
+      </map>
+    </panel>
+    <panel>
+      <viz type="missile_map.missile_map">
+        <title>Threats by Destination</title>
+        <search>
+          <query>index="imotech_eventgen"  |eval dest_ip="99.84.251.94" | iplocation ip prefix=start_ | rename start_lat AS start_lonx, start_lon AS start_latx | rename start_latx AS start_lat, start_lonx AS start_lon | iplocation dest_ip prefix=end_ | rename end_lat AS end_lonx, end_lon AS end_latx | rename end_latx AS end_lat, end_lonx AS end_lon | head 50 | table start_lat start_lon end_lat end_lon | eval animate="yes", pulse_at_start="yes"</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="drilldown">none</option>
+        <option name="missile_map.missile_map.lineThickness">1</option>
+        <option name="missile_map.missile_map.mapLatitude">35</option>
+        <option name="missile_map.missile_map.mapLongitude">-95</option>
+        <option name="missile_map.missile_map.mapZoom">5</option>
+        <option name="missile_map.missile_map.staticColor">#FF0000</option>
+        <option name="missile_map.missile_map.tileSet">satellite_tiles</option>
+      </viz>
+    </panel>
+  </row>
+</dashboard>

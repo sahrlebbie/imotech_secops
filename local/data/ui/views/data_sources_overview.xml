@@ -1,0 +1,139 @@
+<dashboard theme="dark">
+  <label>Data Sources Overview</label>
+  <row>
+    <panel>
+      <html>
+        <head>
+          <style>
+          img
+          { float: right;
+          }
+          </style>
+        </head>
+        <body>
+<p>
+            <img src="https://www.imo-tech.com/wp-content/uploads/2019/06/integration-solutions-1-999x1024.png" style="border0px;margin:10px;width:10%;"/>
+          </p>
+        <h1>
+          <b>Overview</b>
+        </h1>
+      <p>The following dashboard is an overview of Data Sources currently flowing into Splunk as it pertains to all ingested data from client's environment. It is meant to give a quick glimpse of what is currently happening in Client's Environment.</p>
+      <p color="red">This overview page describes Data Sources by the following areas: <mark>Total Events</mark>, <mark>Sourcetypes Reporting</mark>, <mark>Sources Reporting</mark>, <mark>Hosts Reporting</mark>, and <mark>Errors Overview</mark>.</p>
+      </body>
+    </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Events Count</title>
+      <single>
+        <search>
+          <query>| tstats count where index=*</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x53a051","0x53a051"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Total Events Monitored</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Sourcetypes Count</title>
+      <single>
+        <search>
+          <query>| tstats count where index=* OR index=_* by sourcetype,_time |timechart sum(count) by sourcetype</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x555","0x555"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Sourcetypes Monitored</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Sources Count</title>
+      <single>
+        <search>
+          <query>| tstats count where index=* OR index=_* by source,_time |timechart sum(count) by source</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x555","0x555"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Sources Monitored</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>Hosts Count</title>
+      <single>
+        <search>
+          <query>| tstats count where index=* OR index=_* by host,_time |timechart sum(count) by host</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="rangeColors">["0xdc4e41","0x555","0x555"]</option>
+        <option name="rangeValues">[0,100]</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="underLabel">Hosts Monitored</option>
+        <option name="useColors">1</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Sourcetypes Types</title>
+      <chart>
+        <search>
+          <query>| tstats count where index=* OR index=_* by sourcetype</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Sources Count</title>
+      <chart>
+        <search>
+          <query>| tstats count where index=* OR index=_* by source</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+    <panel>
+      <title>Hosts Count</title>
+      <chart>
+        <search>
+          <query>| tstats count where index=* OR index=_* by host</query>
+          <earliest>0</earliest>
+          <latest></latest>
+        </search>
+        <option name="charting.chart">pie</option>
+        <option name="charting.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </chart>
+    </panel>
+  </row>
+</dashboard>
